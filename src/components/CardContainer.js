@@ -8,20 +8,17 @@ import Pagination from "./Pagination";
 function CardContainer() {
   const store = useSelector((state) => state.data);
   const [search, setSearch] = useState("");
-  const [flag,setFlag]=useState(false);
-  const [fetchedData] = useState(
-    JSON.parse(localStorage.getItem("data"))
-  );
+  const [flag, setFlag] = useState(false);
+  const [fetchedData] = useState(JSON.parse(localStorage.getItem("data")));
   const dispatch = useDispatch();
   const [filteredNames, setFilteredNames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [CardsPerPage, setCardsPerPage] = useState(20);
-
-
+  const [CardsPerPage] = useState(20);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // wait for the store to populate
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (store) {
       setFlag(true);
@@ -42,13 +39,12 @@ function CardContainer() {
     // fetch data from LocalStorage
     if (search === "") {
       // extract the bookmarked ones
-      let temp=store.filter((item) => item.bookmark === 1)
+      let temp = store.filter((item) => item.bookmark === 1);
       if (temp.length === 0) {
         setFilteredNames(false);
       } else {
         setFilteredNames(temp);
         setCurrentPage(1);
-
       }
     } else {
       setFilteredNames(
@@ -78,8 +74,8 @@ function CardContainer() {
               {filteredNames
                 .slice(indexOfFirstCard, indexOfLastCard)
                 .map((post, index) => {
-                return <Card data={post} key={post.id} />;
-              })}
+                  return <Card data={post} key={post.id} />;
+                })}
             </div>
             <Pagination
               cardsPerPage={CardsPerPage}
