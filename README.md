@@ -1,4 +1,3 @@
-Napomena: Zbog ograničenog broja upita, odgovor s Marvelovog servera je spremljen u datoteku items.js. Prikazani podaci u aplikaciji dohvaćaju se upravo iz tog .js filea.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
