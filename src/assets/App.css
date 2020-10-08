@@ -127,10 +127,9 @@ a {
 /********** spinner **********/
 
 .loader {
-  padding-top:15px;
   margin:auto;
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border-top: 16px solid #EE171F; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -151,6 +150,9 @@ a {
   }
   .search_box{
     width:100%;
+  }
+  .search_img{
+    width:250px;
   }
 }
 

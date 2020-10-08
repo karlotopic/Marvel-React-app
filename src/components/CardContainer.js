@@ -8,7 +8,6 @@ import Pagination from "./Pagination";
 function CardContainer() {
   const store = useSelector((state) => state.data);
   const [search, setSearch] = useState("");
-  const [flag, setFlag] = useState(false);
   const [fetchedData] = useState(JSON.parse(localStorage.getItem("data")));
   const dispatch = useDispatch();
   const [filteredNames, setFilteredNames] = useState([]);
@@ -17,23 +16,12 @@ function CardContainer() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // wait for the store to populate
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    if (store) {
-      setFlag(true);
-    }
-  });
-
-  // get the data from local storage when component renders
-  useEffect(() => {
-    if (flag) {
-      if (fetchedData.length !== 0) {
-        dispatch(updateData(fetchedData));
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flag]);
+  useEffect(()=>{
+    if (fetchedData.length !== 0) {
+            dispatch(updateData(fetchedData));
+          }
+          // eslint-disable-next-line
+  },[])
 
   useEffect(() => {
     // fetch data from LocalStorage
