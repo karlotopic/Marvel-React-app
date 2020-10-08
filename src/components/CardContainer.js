@@ -19,7 +19,7 @@ function CardContainer() {
   useEffect(()=>{
     if (fetchedData.length !== 0) {
             dispatch(updateData(fetchedData));
-          }
+    }
           // eslint-disable-next-line
   },[])
 

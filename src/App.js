@@ -6,7 +6,7 @@ import { requestApiData } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
-  const [store] = useState(useSelector((state) => state.data))
+  const store=useSelector((state) => state.data)
   const [flag,setFlag]=useState(false)
 
   // store the bookmarked cards on refresh or after leaving the page
@@ -24,12 +24,18 @@ function App() {
 
   useEffect(() => {
     dispatch(requestApiData());
-    localStorage.setItem("data", JSON.stringify([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    let temp= JSON.parse(localStorage.getItem("data"))
+    if(temp==undefined){
+      localStorage.setItem("data", JSON.stringify([]));
+    }
+
   }, []);
 
   useEffect(()=>{
-    setFlag(true)
+    if(store.length!==0){
+        setFlag(true)
+    }
   },[store])
 
   return (
